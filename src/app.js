@@ -22,6 +22,12 @@ app.get('/todos', async (req, res) => {
     }
 );
 
+app.delete('/todo/:id', async (req, res) => {
+    const todos = await Todo.findByIdAndDelete(req.params.id);
+    res.json(todos);
+    }
+);
+
 app.post('/todo', async (req, res) => {
     const todo = new Todo({
         title: req.body.title,
